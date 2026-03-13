@@ -2,6 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import './Recipe.css';
 import { useEffect, useState } from 'react';
 import { getMealById } from '../api';
+import Preloader from './Preloader';
 
 function Recipe()
 {
@@ -15,19 +16,22 @@ function Recipe()
  return (
     <div className='wrap'>
         <div className='recipe'>
+           {
+           !(recipe.strInstructions) ? <Preloader /> : (
+    <>
             <img src={recipe.strMealThumb} alt={recipe.strMeal} />
             <h2>{recipe.strMeal}</h2>
             <div>Category: <h3>{recipe.strCategory}</h3></div>
             {recipe.strArea ? <div>Area: <h4>{recipe.strArea}</h4></div> : null }
-            <p>{recipe.setInstructions}</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Ingredient</th>
-                        <th>Measure</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <p>{recipe.strInstructions}</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ingredient</th>
+                            <th>Measure</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     {
                     Object.keys(recipe).map
                     (
@@ -47,6 +51,10 @@ function Recipe()
                     }
                 </tbody>
             </table>
+                   </>
+                   ) 
+}
+            
             {
                 !(recipe.strYoutube) ?  null :
                 (

@@ -1,7 +1,7 @@
 import './Home.css';
 import { useState, useEffect } from 'react';
 import { getAllCategories } from '../../api';
-//import Preloader
+import Preloader from '../../components/Preloader';
 import CategoryList from '../../components/categoryList/CategoryList';
 function Home()
 {
@@ -15,7 +15,7 @@ function Home()
     );
     return(
         <div className='wrap'>
-         <CategoryList catalog={catalog} />
+        {catalog != null && catalog.length === 0 ? <Preloader /> : <CategoryList catalog={catalog} />}
         </div>
     )
 }

@@ -8,6 +8,7 @@ import Contacts from './pages/main/Contacts';
 import NotFound from './pages/main/NotFound';
 import Category from './components/Category';
 import Recipe from './components/Recipe';
+import Preloader from './components/Preloader';
 
 function App() {
   const text=

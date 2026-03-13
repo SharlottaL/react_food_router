@@ -1,5 +1,6 @@
 import './MealList.css';
 import Meal from './Meal';
+import Preloader from './Preloader';
 
 function MealList({meals})
 {

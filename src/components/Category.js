@@ -3,6 +3,7 @@ import './Category.css';
 import { useEffect, useState } from 'react';
 import { getFilteredCategory } from '../api';
 import MealList from './MealList';
+import Preloader from './Preloader';
 
 function Category()
 {
@@ -20,7 +21,10 @@ function Category()
 
     return (
         <div className='wrap'>
-        <MealList meals={meals} />
+                    {
+                        meals != null && meals.length === 0 ? <Preloader /> : <MealList meals={meals} />
+                    }
+        
         <button className='btn' onClick={goBack}>Go back</button>
         </div>
     )
